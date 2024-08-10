@@ -1,0 +1,13 @@
+{
+  "include": [ "src" ],
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "lib": [ "DOM" ],
+    "jsx": "react",
+    "strict": true,
+    "allowSyntheticDefaultImports": true
+  }
+}
+
