@@ -3,6 +3,7 @@ import nodeResolve from '@rollup/plugin-node-resolve';
 import json from '@rollup/plugin-json';
 import typescript from '@rollup/plugin-typescript';
 import terser from '@rollup/plugin-terser';
+import replace from '@rollup/plugin-replace';
 
 export default {
   input: 'src/index.tsx',
@@ -18,6 +19,9 @@ export default {
     nodeResolve({ browser: true }),
     json(),
     terser(),
+    replace({
+      preventAssignment: true,
+      'process.env.NODE_ENV': JSON.stringify('production'),
+    }),
   ],
 };
-
