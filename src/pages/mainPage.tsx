@@ -10,6 +10,8 @@ import { getExpensesInDay } from '../lib/getExpensesInDay';
 import { sumExpenses } from '../lib/sumExpenses';
 import styled from 'styled-components';
 import { getExpensesInMonthBeforeDay } from '../lib/getExpensesInMonthBeforeDay';
+import { getDayTarget } from '../lib/getDayTarget';
+import { Calendar } from '../components/calendar';
 
 const Outer = styled.div`
   flex: 1;
@@ -59,21 +61,17 @@ export function MainPage() {
     storeContext.store.expenses,
     dateContext.date
   );
-  const expensesInMonthBeforeDay = getExpensesInMonthBeforeDay(
-    storeContext.store.expenses,
-    dateContext.date
-  );
   const expensesInMonthSum = sumExpenses(expensesInMonth);
   const expensesInDaySum = sumExpenses(expensesInDay);
-  const expensesInMonthBeforeDaySum = sumExpenses(expensesInMonthBeforeDay);
-
-  const daysLeftInMonth =
-    moment(dateContext.date).endOf('month').diff(dateContext.date, 'day') + 1;
-  const dayTarget =
-    (storeContext.store.target - expensesInMonthBeforeDaySum) / daysLeftInMonth;
+  const dayTarget = getDayTarget(
+    storeContext.store.expenses,
+    storeContext.store.target,
+    dateContext.date
+  );
 
   return (
     <Outer>
+      <Calendar />
       <Section>
         <div>Spending Goal</div>
         <div onClick={() => setIsSetTargetModalOpen(true)}>
