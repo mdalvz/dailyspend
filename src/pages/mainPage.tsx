@@ -97,7 +97,7 @@ export function MainPage() {
           }}
           onClick={() => setIsAddExpenseModalOpen(true)}
         >
-          {expensesInMonthSum.toFixed(2)}
+          GOO {expensesInMonthSum.toFixed(2)}
         </div>
       </Section>
       <SetTargetModal
