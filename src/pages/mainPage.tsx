@@ -84,7 +84,7 @@ export function MainPage() {
           style={{ color: expensesInDaySum <= dayTarget ? 'green' : 'red' }}
           onClick={() => setIsAddExpenseModalOpen(true)}
         >
-          {expensesInDaySum}
+          {expensesInDaySum.toFixed(2)}
           {dayTarget > 0 ? <>&nbsp;/&nbsp;{dayTarget.toFixed(2)}</> : null}
         </div>
       </Section>
@@ -97,7 +97,7 @@ export function MainPage() {
           }}
           onClick={() => setIsAddExpenseModalOpen(true)}
         >
-          {expensesInMonthSum}
+          {expensesInMonthSum.toFixed(2)}
         </div>
       </Section>
       <SetTargetModal
